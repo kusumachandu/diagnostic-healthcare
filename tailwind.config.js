@@ -7,7 +7,7 @@ module.exports = {
         "blue-20": "#caf0f8",
         "blue-50": "#ade8f4",
         "blue-100": "#90e0ef",
-        "blue-500": "#48cae4",
+        "blue-500": "#6366f1",
         "primary-100": "#00b4d8",
         "primary-300": "#0096c7",
         "primary-500": "#0077b6",
