@@ -1,33 +1,84 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import DiagnosticButton from "../widgets/DiagnosticButton";
+import Question from "../widgets/Question";
 
 function Card() {
+  const [state, setState] = useState<number>(0);
+  const [toggle, setToggle] = useState<boolean>(false);
 
+  console.log(toggle)
+
+  function increment() {
+    setState((prev) => prev + 1);
+  }
+
+  function decrement() {
+    setState((prev) => prev - 1);
+  }
+
+  function reset(){
+    setState(0);
+  }
+
+  const data = [
+    {
+      id: 1,
+      question: "How you are feeling ?",
+      rating: "",
+    },
+    {
+      id: 2,
+      question: "any headache symptoms ?",
+      rating: "",
+    },
+    {
+      id: 3,
+      question: "cold and cough ?",
+      rating: "",
+    },
+    {
+      id: 4,
+      question: "Any Fever symptoms ?",
+      rating: "",
+    },
+    {
+      id: 5,
+      question: "Body Pains ?",
+      rating: "",
+    },
+  ];
+
+  let current = data[state];
 
   return (
-    <div className='border w-[350px] m-auto py-10 rounded-lg shadow-md bg-white'>
-        <div className='text-center'>
-            <p className='font-bold py-2'>hello here is your first question</p>
-            <p>how are you feeling now</p>
+    <>
+      {state < 5 ? (
+        <>
+          {!toggle && (
+            <div className="text-center font-bold">
+              <p className="uppercase mb-5">Take a diagnostic test here!!</p>
+              <DiagnosticButton state={state} reset={reset} toggle={toggle} setToggle={setToggle} message='Start test' />
+            </div>
+          )}
+
+          {toggle && (
+            <div className="flex gap-3">
+              <Question
+                question={current}
+                increment={increment}
+                decrement={decrement}
+              />
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="text-center font-bold">
+          <p className="mb-5"> Thankyou for answering !!</p>
+          <DiagnosticButton state={state} reset={reset}  toggle={toggle} setToggle={setToggle} message='Start test again' />
         </div>
-        <div className='flex justify-around pt-5 text-center'>
-            <div className='w-10 h-10 rounded-full bg-red-200  cursor-pointer' >
-                <p className='mt-2'>1</p>
-            </div>
-            <div className='w-10 h-10 rounded-full bg-orange-200 cursor-pointer'>
-                <p className='mt-2'>2</p>
-            </div>
-            <div className='w-10 h-10 rounded-full bg-yellow-200 cursor-pointer'>
-                <p className='mt-2'>3</p>
-            </div>
-            <div className='w-10 h-10 rounded-full bg-green-200 cursor-pointer'>
-                <p className='mt-2'>4</p>
-            </div>
-            <div className='w-10 h-10 rounded-full bg-green-400 cursor-pointer'>
-                <p className='mt-2'>5</p>
-            </div>
-        </div>
-    </div>
-  )
+      )}
+    </>
+  );
 }
 
-export default Card
+export default Card;
