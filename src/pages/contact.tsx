@@ -11,15 +11,16 @@ const initialValues = {
 const phoneRegExp = /^(\+\d{1,3}[- ]?)?\d{10}$/
 
 const validationSchema = yup.object().shape({
-  name: yup.string().min(3).max(40).required("Required"),
+  name: yup.string().min(3, 'Min 3 chars required').max(40).required("Required"),
   email: yup.string().email("Invalid email").required("Required"),
   mobile: yup.string().matches(phoneRegExp, 'Phone number is not valid').required('Required'),
-  message: yup.string().min(20).required('Required'),
+  message: yup.string().min(20, 'Message must be at least 20 characters').required('Required'),
 });
 
 function Contact() {
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
     console.log(values);
+    onSubmitProps.resetForm();
   };
 
   return (
@@ -53,15 +54,14 @@ function Contact() {
                 handleChange,
                 handleBlur,
                 handleSubmit,
-                handleReset,
               }) => (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="text-left">
                   <div className="">
                     <label htmlFor="name" className="uppercase text-sm text-gray-600 font-bold">
                       Full Name
                     </label>
                     <input
-                      className={`w-full bg-gray-300 text-gray-900 text-center mt-2 mb-3 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.name && touched.name
+                      className={`w-full bg-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.name && touched.name
                         ? "border border-red-700 bg-red-100"
                         : ""}`}
                       type="text"
@@ -71,11 +71,13 @@ function Contact() {
                       onBlur={handleBlur}
                       value={values.name}
                     />
+                    {errors.name && touched.name && <div className="text-red-500">{errors.name}</div>}
+                    <div className="mb-2"></div>
                     <label htmlFor="email" className="uppercase text-sm text-gray-600 font-bold">
                       Email
                     </label>
                     <input
-                      className={`w-full bg-gray-300 text-gray-900 text-center mt-2 mb-3 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.email && touched.email
+                      className={`w-full bg-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.email && touched.email
                         ? "border border-red-700 bg-red-100"
                         : ""}`}
                       type="email"
@@ -85,12 +87,14 @@ function Contact() {
                       onBlur={handleBlur}
                       value={values.email}
                     />
-                    {errors.email && touched.email && <div className="">{errors.email}</div>}
+                    {errors.email && touched.email && <div className="text-red-500">{errors.email}</div>}
+                    <div className="mb-2"></div>
                     <label htmlFor="mobile" className="uppercase text-sm text-gray-600 font-bold">
                       Mobile number
                     </label>
+                    
                     <input
-                      className={`w-full bg-gray-300 text-gray-900 text-center mt-2 mb-3 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.mobile && touched.mobile
+                      className={`w-full bg-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.mobile && touched.mobile
                         ? "border border-red-700 bg-red-100"
                         : ""}`}
                       type="text"
@@ -100,11 +104,13 @@ function Contact() {
                       onBlur={handleBlur}
                       value={values.mobile}
                     />
+                    {errors.mobile && touched.mobile && <div className="text-red-500">{errors.mobile}</div>}
+                    <div className="mb-2"></div>
                     <label htmlFor="message" className="uppercase text-sm text-gray-600 font-bold">
                       Message (min 20 chars)
                     </label>
                     <textarea
-                      className={`w-full bg-gray-300 text-gray-900 text-center mt-2 mb-3 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.message && touched.message
+                      className={`w-full bg-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.message && touched.message
                         ? "border border-red-700 bg-red-100"
                         : ""}`}
                       name="message"
@@ -113,6 +119,8 @@ function Contact() {
                       onBlur={handleBlur}
                       value={values.message}
                     />
+                    {errors.message && touched.message && <div className="mt-[-5px] text-red-500">{errors.message}</div>}
+                    <div className="mb-4"></div>
                     <button
                       className="uppercase text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline"
                       type="submit"
