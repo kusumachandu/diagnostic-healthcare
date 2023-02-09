@@ -1,9 +1,3 @@
-import Navbar from "@/components/layouts/Navbar";
-import Head from "next/head";
-import Image from "next/image";
-import { useRef, useEffect, useState } from "react";
-import lottie from "lottie-web";
-import Imagepath from "../doctor.json";
 import Card from "@/components/layouts/Card";
 
 export default function Home() {
