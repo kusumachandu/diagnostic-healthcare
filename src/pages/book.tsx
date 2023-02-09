@@ -1,5 +1,6 @@
+import BookingSuccess from "@/components/layouts/BookingSuccess";
 import { Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import * as yup from 'yup';
 
 const date:any = new Date();
@@ -7,8 +8,7 @@ const date:any = new Date();
   console.log(currDate)
   let endDate:string;
 
-  // const bookingPeriod = date.getDate() + 7;
-  const bookingPeriod = 26 + 7
+  const bookingPeriod = date.getDate() + 7;
 
   console.log((date.getMonth()+1))
 
@@ -60,14 +60,21 @@ const validationSchema = yup.object().shape({
 });
 
 function Book() {
+  const [bookingSuccess, setBookingSuccess] = useState<boolean>(true);
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
     console.log(values);
     onSubmitProps.resetForm();
+    setBookingSuccess(true);
   };
+
+  const handleSuccessPage = () => {
+    setBookingSuccess(false);
+  }
   
   return (
     <div className="text-center">
-      <div>
+      {!bookingSuccess && (
+        <div>
         <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
           Book your appointment
         </h2>
@@ -172,7 +179,7 @@ function Book() {
               <div className="mb-2"></div>
 
               <label
-                htmlFor="date"
+                htmlFor="time"
                 className="uppercase text-sm text-gray-600 font-bold"
               >
                 Select appointment Time
@@ -192,7 +199,7 @@ function Book() {
                 <option value='5:00'>5:00 - 5:45</option>
                 <option value='6:00'>6:00 - 6:45</option>
               </select>
-              {errors.date && touched.date && <div className="mt-[-5px] text-red-500">{errors.date}</div>}
+              {errors.time && touched.time && <div className="mt-[-5px] text-red-500">{errors.time}</div>}
               <div className="mb-2"></div>
                   
               <button
@@ -207,6 +214,11 @@ function Book() {
               </Formik>
         </div>
       </div>
+      )}
+
+      {bookingSuccess && (
+        <BookingSuccess handleSuccessPage={handleSuccessPage} />
+      )}
     </div>
   );
 }
