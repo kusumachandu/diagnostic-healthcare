@@ -60,7 +60,7 @@ const validationSchema = yup.object().shape({
 });
 
 function Book() {
-  const [bookingSuccess, setBookingSuccess] = useState<boolean>(true);
+  const [bookingSuccess, setBookingSuccess] = useState<boolean>(false);
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
     console.log(values);
     onSubmitProps.resetForm();
@@ -203,7 +203,7 @@ function Book() {
               <div className="mb-2"></div>
                   
               <button
-                className="uppercase text-sm mt-2 font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline"
+                className="uppercase text-sm mt-5 mb-16 font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline"
                 type="submit"
               >
                 Book appointment  
