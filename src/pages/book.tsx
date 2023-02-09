@@ -1,4 +1,6 @@
 import BookingSuccess from "@/components/layouts/BookingSuccess";
+import { db } from "@/config/firebase-config";
+import { addDoc, collection } from "firebase/firestore";
 import { Formik } from "formik";
 import React, { useState } from "react";
 import * as yup from 'yup';
@@ -61,8 +63,13 @@ const validationSchema = yup.object().shape({
 
 function Book() {
   const [bookingSuccess, setBookingSuccess] = useState<boolean>(false);
+  const appointmentsCollectionRef = collection(db, "appointments")
+
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
-    console.log(values);
+    const recordAppointment = async () => {
+      await addDoc(appointmentsCollectionRef, values);
+    }
+    recordAppointment();
     onSubmitProps.resetForm();
     setBookingSuccess(true);
   };
