@@ -39,7 +39,7 @@ function About() {
             </div>
           </div>
           <div className="px-5 py-5  md:pl-10 md:py-0 lg:py-0 lg:w-[70%]">
-            <div className="lg:mt-10 md:mt-[52px]">
+            <div className="lg:mt-[85px] md:mt-[52px]">
               <h1 className="font-bold md:text-md lg:text-lg">
                 01. years of intense experience
               </h1>
