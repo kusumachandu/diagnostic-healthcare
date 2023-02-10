@@ -1,6 +1,8 @@
 import { auth } from "@/config/firebase-config";
+import { useAuth } from "@/context/AuthContext";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Formik } from "formik";
+import { useState } from "react";
 import * as yup from "yup";
 
 const initialValues = {
@@ -17,8 +19,11 @@ const validationSchema = yup.object().shape({
 });
 
 export default function AdminLogin() {
-  const handleFormSubmit = (values: any, onSubmitProps: any) => {
+  const [isLoggingIn, setIsLoggingIn] = useState(true);
+  const { login }:any = useAuth();
 
+  const handleFormSubmit = (values: any, onSubmitProps: any) => {
+    
     const login = async () => {
         try {
             const user = await signInWithEmailAndPassword(
