@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/layouts/Navbar";
 
 function blogspage() {
+  
   const blogs = [
     {
       title: "attention Deficit",
