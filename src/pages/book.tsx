@@ -5,6 +5,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { Formik } from "formik";
 import React, { useState } from "react";
 import * as yup from "yup";
+import { v4 as uuidv4 } from 'uuid';
 
 const date: any = new Date();
 const currDate = `${date.getFullYear()}-${
@@ -63,8 +64,17 @@ function Book() {
   const appointmentsCollectionRef = collection(db, "appointments");
 
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
+    const bookingData = {
+      id: uuidv4(),
+      name: values.name,
+      email: values.email,
+      mobile: values.mobile,
+      bookingDate: values.date,
+      bookingTime: values.time,
+      bookedOn: new Date(),
+    }
     const recordAppointment = async () => {
-      await addDoc(appointmentsCollectionRef, values);
+      await addDoc(appointmentsCollectionRef, bookingData);
     };
     recordAppointment();
     onSubmitProps.resetForm();
