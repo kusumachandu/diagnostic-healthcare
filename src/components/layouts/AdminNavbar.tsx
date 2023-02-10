@@ -1,7 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
+import { signOut } from 'firebase/auth'
+import { auth } from '@/config/firebase-config'
 
 function AdminNavbar({ toggleToAppointments, toggleToQueries }: any) {
+  const logoutHandler = () => {
+    signOut(auth);
+  }
+
   return (
     <div className="lg:px-36 lg:py-10 md:px-20 md:py-10 px-5 py-10 ">
       <div className="border border-gray-100 flex justify-between rounded-[40px] px-3 h-20 pt-[12px] shadow-md bg-white">
@@ -21,11 +27,9 @@ function AdminNavbar({ toggleToAppointments, toggleToQueries }: any) {
               </p>
           </div>
         </div>
-        <Link href="/logout">
-          <div className="border font-bold w-[100px] h-14 py-2 bg-primary-500 pt-[14px] rounded-[40px] text-center text-white cursor-pointer hover:bg-primary-300">
+          <div onClick={logoutHandler} className="border font-bold w-[100px] h-14 py-2 bg-primary-500 pt-[14px] rounded-[40px] text-center text-white cursor-pointer hover:bg-primary-300">
             Logout
           </div>
-        </Link>
       </div>
     </div>
   )
