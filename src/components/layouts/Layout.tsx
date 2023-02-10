@@ -6,7 +6,6 @@ function Layout(props : any) {
 
   return (
     <>
-        <Navbar />
         <main>{props.children}</main>
     </>
   )

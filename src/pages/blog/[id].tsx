@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import Profile from "@/components/widgets/Profile";
+import Navbar from "@/components/layouts/Navbar";
 
 export default function BlogViewPage() {
   const router = useRouter();
@@ -84,6 +84,7 @@ export default function BlogViewPage() {
 
   return (
     <div className="md:px-24 lg:px-32">
+      <Navbar />
       <div className="lg:grid lg:grid-cols-2 px-10">
         <div className=" text-center flex justify-center items-center">
           <div className="">
