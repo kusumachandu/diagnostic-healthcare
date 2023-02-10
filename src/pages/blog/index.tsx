@@ -43,6 +43,13 @@ function blogspage() {
       id: 6,
     },
   ];
+  
+  const handleButtonClick = () => {
+    const element = document.getElementById("blog");
+    if(element) {
+      element.scrollIntoView({behavior: 'smooth'});
+    }
+  };
 
   return (
     <div>
@@ -67,7 +74,7 @@ function blogspage() {
           <div className="flex justify-center gap-28 pb-10">
             <div className="w-5 h-5 rounded-full bg-pink-300"></div>
             <div>
-              <button className="border text-white font-bold bg-black rounded-lg px-3 py-2">
+              <button onClick={handleButtonClick} className="border text-white font-bold bg-black rounded-lg px-3 py-2">
                 Go To Blogs
               </button>
             </div>
@@ -136,7 +143,7 @@ function blogspage() {
         </div>
       </div>
       <div className="mb-10"></div>
-      <main className="p-4 w-[80%] md:w-[80%] lg:w-[70%] m-auto">
+      <main id="blog" className="p-4 w-[80%] md:w-[80%] lg:w-[70%] m-auto">
         <div className="px-5">
           <ul className="md:grid md:grid-cols-2 md:gap-x-4 lg:grid lg:grid-cols-3 lg:gap-x-4 justify-evenly">
             {blogs.map((blog) => (
