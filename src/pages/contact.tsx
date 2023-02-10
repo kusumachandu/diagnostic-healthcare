@@ -1,5 +1,7 @@
 import { Formik } from "formik";
 import * as yup from "yup";
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from "@/config/firebase-config";
 
 const initialValues = {
   name: "",
@@ -18,8 +20,13 @@ const validationSchema = yup.object().shape({
 });
 
 function Contact() {
+  const queriesCollectionRef = collection(db, "queries")
+
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
-    console.log(values);
+    const recordMessage = async () => {
+      await addDoc(queriesCollectionRef, values);
+    }
+    const response = recordMessage();
     onSubmitProps.resetForm();
   };
 
