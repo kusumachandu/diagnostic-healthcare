@@ -3,6 +3,7 @@ import React from "react";
 
 function Question({ question, increment, decrement }: any) {
 
+
   return (
     <div className="border w-[350px] m-auto py-10 rounded-lg shadow-md bg-white">
       { question.id > 1 && (
