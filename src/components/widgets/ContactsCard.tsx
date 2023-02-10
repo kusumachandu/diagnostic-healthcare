@@ -51,7 +51,7 @@ function ContactsCard() {
           {userData.map((data) => {
             return (
               <li className="w-[90%] m-auto">
-                <div className="border lg:flex justify-center gap-5 py-5 shadow-md rounded-2xl mb-5">
+                <div className="border gap-5 py-5 shadow-md rounded-2xl mb-5">
                   <div className="lg:w-[120%] py-10 lg:pl-20 pl-5">
                     <div className="flex py-2">
                       <p className="font-bold uppercase">name:</p>
