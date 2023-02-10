@@ -3,6 +3,7 @@ import React from "react";
 
 function Question({ question, increment, decrement }: any) {
 
+
   return (
     <div className="border w-[350px] m-auto py-10 rounded-lg shadow-md bg-white">
       { question.id > 1 && (
@@ -21,20 +22,20 @@ function Question({ question, increment, decrement }: any) {
         <p>how are you feeling now</p>
       </div>
       <div className="flex justify-around pt-5 text-center">
-        <div className="w-10 h-10 rounded-full bg-red-200  cursor-pointer">
+        <div className="w-10 h-10 rounded-full bg-green-400  cursor-pointer">
           <p className="mt-2" onClick={() => increment()}>1</p>
         </div>
-        <div className="w-10 h-10 rounded-full bg-orange-200 cursor-pointer">
-          <p className="mt-2">2</p>
+        <div className="w-10 h-10 rounded-full bg-green-200 cursor-pointer">
+          <p className="mt-2" onClick={() => increment()}>2</p>
         </div>
         <div className="w-10 h-10 rounded-full bg-yellow-200 cursor-pointer">
-          <p className="mt-2">3</p>
+          <p className="mt-2" onClick={() => increment()}>3</p>
         </div>
-        <div className="w-10 h-10 rounded-full bg-green-200 cursor-pointer">
-          <p className="mt-2">4</p>
+        <div className="w-10 h-10 rounded-full bg-orange-200 cursor-pointer">
+          <p className="mt-2" onClick={() => increment()}>4</p>
         </div>
-        <div className="w-10 h-10 rounded-full bg-green-400 cursor-pointer">
-          <p className="mt-2">5</p>
+        <div className="w-10 h-10 rounded-full bg-red-400 cursor-pointer">
+          <p className="mt-2" onClick={() => increment()}>5</p>
         </div>
       </div>
     </div>
