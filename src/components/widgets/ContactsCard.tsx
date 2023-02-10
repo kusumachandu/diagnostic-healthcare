@@ -1,41 +1,5 @@
 import React from "react";
 
-function ContactsCard() {
-  const userData = [
-    {
-      name: "chandu",
-      email: "chandu@gmail.com",
-      mobile: "8790133883",
-      date: "10-02-23",
-      message:
-        "I am not feeling well since last week. I am suffering woth heavy fever and body pains what are the precautions to be taken",
-    },
-    {
-      name: "chandu",
-      email: "chandu@gmail.com",
-      mobile: "8790133883",
-      date: "10-02-23",
-      message:
-        "I am not feeling well since last week. I am suffering woth heavy fever and body pains what are the precautions to be taken",
-    },
-    {
-      name: "chandu",
-      email: "chandu@gmail.com",
-      mobile: "8790133883",
-      date: "10-02-23",
-      message:
-        "I am not feeling well since last week. I am suffering woth heavy fever and body pains what are the precautions to be taken",
-    },
-    {
-      name: "chandu",
-      email: "chandu@gmail.com",
-      mobile: "8790133883",
-      date: "10-02-23",
-      message:
-        "I am not feeling well since last week. I am suffering woth heavy fever and body pains what are the precautions to be taken",
-    },
-  ];
-
   return (
     <div className="lg:px-24 px-5 pb-10">
       <div className="border pb-5 rounded-2xl shadow-md pt-10">
@@ -48,27 +12,30 @@ function ContactsCard() {
           </div>
         </div>
         <ul>
-          {userData.map((data) => {
+          {messages.map((query: any) => {
             return (
               <li className="w-[90%] m-auto">
                 <div className="border lg:flex justify-center gap-5 py-5 shadow-md rounded-2xl mb-5">
                   <div className="lg:w-[120%] py-10 lg:pl-20 pl-5">
+              <li className="w-[90%] m-auto" key={query.id}>
+                <div className="border flex justify-center gap-5 py-5 shadow-md rounded-2xl mb-5">
+                  <div className="w-[120%] py-10 pl-48">
                     <div className="flex py-2">
                       <p className="font-bold uppercase">name:</p>
-                      <p className="ml-2">{data.name}</p>
+                      <p className="ml-2">{query.name}</p>
                     </div>
                     <div className="flex py-2">
                       <p className="font-bold uppercase">email:</p>
-                      <p className="ml-2"> {data.email}</p>
+                      <p className="ml-2"> {query.email}</p>
                     </div>
                     <div className="flex py-2">
                       <p className="font-bold uppercase">mobile:</p>
-                      <p className="ml-2"> {data.mobile}</p>
+                      <p className="ml-2"> {query.mobile}</p>
                     </div>
-                    <div className="flex py-2">
+                    {/* <div className="flex py-2">
                       <p className="font-bold uppercase">Date:</p>
-                      <p className="ml-2"> {data.date}</p>
-                    </div>
+                      <p className="ml-2"></p>
+                    </div> */}
                   </div>
                   <div className="lg:pr-20 px-3 flex justify-center items-center md:px-40">
                     <div>
@@ -76,7 +43,7 @@ function ContactsCard() {
                         <p>Message</p>
                       </div>
                       <p className="text-[16px] text-gray-500 leading-6">
-                        {data.message}
+                        {query.message}
                       </p>
                     </div>
                   </div>

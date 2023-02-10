@@ -2,6 +2,8 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from "@/config/firebase-config";
+import Navbar from "@/components/layouts/Navbar";
+import { v4 as uuidv4 } from 'uuid';
 
 const initialValues = {
   name: "",
@@ -16,15 +18,23 @@ const validationSchema = yup.object().shape({
   name: yup.string().min(3, 'Min 3 chars required').max(40).required("Required"),
   email: yup.string().email("Invalid email").required("Required"),
   mobile: yup.string().matches(phoneRegExp, 'Phone number is not valid').required('Required'),
-  message: yup.string().min(20, 'Message must be at least 20 characters').required('Required'),
+  message: yup.string().min(50, 'Message must be at least 50 characters').required('Required'),
 });
 
 function Contact() {
   const queriesCollectionRef = collection(db, "queries")
 
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
+    const data = {
+      id: uuidv4(),
+      name: values.name,
+      email: values.email,
+      mobile: values.mobile,
+      message: values.message,
+      date: new Date(),
+    }
     const recordMessage = async () => {
-      await addDoc(queriesCollectionRef, values);
+      await addDoc(queriesCollectionRef, data);
     }
     const response = recordMessage();
     onSubmitProps.resetForm();
@@ -33,6 +43,7 @@ function Contact() {
   return (
     <>
       <div className="text-center">
+      <Navbar />
         <div>
           <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
             Lets talk about everything!
@@ -114,7 +125,7 @@ function Contact() {
                     {errors.mobile && touched.mobile && <div className="text-red-500">{errors.mobile}</div>}
                     <div className="mb-2"></div>
                     <label htmlFor="message" className="uppercase text-sm text-gray-600 font-bold">
-                      Message (min 20 chars)
+                      Message (min 50 chars)
                     </label>
                     <textarea
                       className={`w-full bg-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.message && touched.message
