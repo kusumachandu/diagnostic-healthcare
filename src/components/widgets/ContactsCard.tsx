@@ -1,5 +1,7 @@
 import React from "react";
 
+function ContactsCard ({messages}: any) {
+
   return (
     <div className="lg:px-24 px-5 pb-10">
       <div className="border pb-5 rounded-2xl shadow-md pt-10">
@@ -14,9 +16,6 @@ import React from "react";
         <ul>
           {messages.map((query: any) => {
             return (
-              <li className="w-[90%] m-auto">
-                <div className="border lg:flex justify-center gap-5 py-5 shadow-md rounded-2xl mb-5">
-                  <div className="lg:w-[120%] py-10 lg:pl-20 pl-5">
               <li className="w-[90%] m-auto" key={query.id}>
                 <div className="border flex justify-center gap-5 py-5 shadow-md rounded-2xl mb-5">
                   <div className="w-[120%] py-10 pl-48">
