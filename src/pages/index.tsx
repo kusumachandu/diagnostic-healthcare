@@ -1,4 +1,5 @@
 import Card from "@/components/layouts/Card";
+import Navbar from "@/components/layouts/Navbar";
 
 export default function Home() {
 
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <div>
       <div className="m-0 bg-blue-50 rounded-br-[45%]">
+      <Navbar />  
         <div className="mt-[-30px] pb-20">
           <div className="flex justify-between">
             <div className="pl-40 py-20">

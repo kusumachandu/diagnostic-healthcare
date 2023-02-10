@@ -1,8 +1,10 @@
+import Navbar from "@/components/layouts/Navbar";
 import React from "react";
 
 function About() {
   return (
     <div>
+      <Navbar />
       <div className="px-10">
         <div className="rounded-lg w-[300px] md:w-[600px] lg:w-[600px] m-auto">
           <img
