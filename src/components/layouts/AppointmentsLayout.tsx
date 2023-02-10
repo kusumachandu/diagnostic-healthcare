@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import Button from "@mui/material/Button";
-import AdminNavbar from "./AdminNavbar";
+// import Button from "@mui/material/Button";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/config/firebase-config";
 
 const columns = [
-  // {
-  //   field: "id",
-  //   headerName: "ID",
-  //   width: 90,
-  // },
   { 
     field: "slno",
     headerName: '',
@@ -77,19 +71,17 @@ const columns = [
   // },
 ];
 
-let rows;
-
 function AppointmentsLayout() {
-  const [toggle, setToggle] = useState<any>({});
+  // const [toggle, setToggle] = useState<any>({});
   const [appointments, setAppointments] = useState<any>([])
   const appointmentsCollectionRef = collection(db, 'appointments')
 
-  const handleToggle = (index: any) => {
-    setToggle({
-      ...toggle,
-      [index]: !toggle[index],
-    });
-  };
+  // const handleToggle = (index: any) => {
+  //   setToggle({
+  //     ...toggle,
+  //     [index]: !toggle[index],
+  //   });
+  // };
 
 
   useEffect(() => {
@@ -104,8 +96,6 @@ function AppointmentsLayout() {
     }
     fetchAppointments()
   },[])
-
-  // rows = appointments
 
   return (
       <Box
