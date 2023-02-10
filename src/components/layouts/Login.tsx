@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { auth } from "@/config/firebase-config";
@@ -19,20 +19,19 @@ const validationSchema = yup.object().shape({
 
 function Login() {
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
-    
     const login = async () => {
-        try {
-            const user = await signInWithEmailAndPassword(
-                auth,
-                values.username,
-                values.password,
-            );
-            console.log(user);
-            // localStorage.setItem("token", );
-        } catch (error) {
-            console.log(error);
-        }
-    }
+      try {
+        const user = await signInWithEmailAndPassword(
+          auth,
+          values.username,
+          values.password
+        );
+        console.log(user);
+        // localStorage.setItem("token", );
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
     login();
 
@@ -40,8 +39,11 @@ function Login() {
   };
 
   return (
-    <div className="shadow-2xl mr-40 w-full lg:w-[40%] md:w-[50%] lg:m-auto md:m-auto p-1">
+    <div className="pt-10 w-full lg:w-[60%] md:w-[80%] lg:m-auto md:m-auto p-1">
       <div className="w-rull m-5 lg:m-16 md:m-5">
+        <div className="font-bold text-center text-3xl pb-0">
+          <h1> Admin Login </h1>
+        </div>
         <Formik
           onSubmit={handleFormSubmit}
           initialValues={initialValues}
@@ -108,19 +110,19 @@ function Login() {
                   </div>
                 )}
                 <div className="mb-2"></div>
-                  <button
-                    className="uppercase text-sm mt-5 font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline"
-                    type="submit"
-                  >
-                    Login
-                  </button>
+                <button
+                  className="uppercase text-sm mt-5 font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline"
+                  type="submit"
+                >
+                  Login
+                </button>
               </div>
             </form>
           )}
         </Formik>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
