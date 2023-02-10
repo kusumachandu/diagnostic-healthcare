@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Navbar from "@/components/layouts/Navbar";
 
 function blogspage() {
   
@@ -45,6 +46,7 @@ function blogspage() {
 
   return (
     <div>
+      <Navbar />
       <div>
         <div className="border w-[95%] m-auto md:w-[80%] md:shadow-md shadow-md ld:w-[80%] lg:m-auto text-center rounded-2xl lg:transition-all lg:shadow-md">
           <div className="flex justify-around py-2 mt-2">
