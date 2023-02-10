@@ -1,4 +1,5 @@
 import BookingSuccess from "@/components/layouts/BookingSuccess";
+import Navbar from "@/components/layouts/Navbar";
 import { db } from "@/config/firebase-config";
 import { addDoc, collection } from "firebase/firestore";
 import { Formik } from "formik";
@@ -76,6 +77,7 @@ function Book() {
 
   return (
     <div className="text-center">
+      <Navbar />
       {!bookingSuccess && (
         <div>
           <h2 className="text-4xl lg:text-5xl font-bold leading-tight">

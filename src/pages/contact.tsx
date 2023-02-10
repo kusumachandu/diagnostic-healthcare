@@ -2,6 +2,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from "@/config/firebase-config";
+import Navbar from "@/components/layouts/Navbar";
 
 const initialValues = {
   name: "",
@@ -33,6 +34,7 @@ function Contact() {
   return (
     <>
       <div className="text-center">
+      <Navbar />
         <div>
           <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
             Lets talk about everything!

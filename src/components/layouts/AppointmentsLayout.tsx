@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import Button from "@mui/material/Button";
+import AdminNavbar from "./AdminNavbar";
 
 function AppointmentsLayout() {
-
   const [toggle, setToggle] = useState<any>({});
 
   const handleToggle = (index: any) => {
@@ -28,9 +28,9 @@ function AppointmentsLayout() {
     },
     {
       field: "time",
-      headerName: 'Time',
+      headerName: "Time",
       width: 150,
-      editable: false
+      editable: false,
     },
     {
       field: "name",
@@ -57,32 +57,26 @@ function AppointmentsLayout() {
       width: 150,
       editable: true,
       renderCell: (cellValues: any) => {
-
         if (!toggle) {
           return (
-            <Button
-              variant="contained"
-              color="success"
-              onClick={handleToggle}
-            >
+            <Button variant="contained" color="success" onClick={handleToggle}>
               Success
             </Button>
-          )
-        }
-        else {
+          );
+        } else {
           return (
             <Button
               variant="contained"
               color="error"
               onClick={() => {
-                setToggle(!toggle)
+                setToggle(!toggle);
               }}
             >
               Pending
             </Button>
-          )
+          );
         }
-      }
+      },
     },
   ];
 
@@ -94,10 +88,7 @@ function AppointmentsLayout() {
       name: "Snow",
       email: "chandu@gmail.com",
       mobile: "8790122447",
-      status: [
-        "pending",
-        "Completed"
-      ]
+      status: ["pending", "Completed"],
     },
     {
       id: 2,
@@ -106,10 +97,7 @@ function AppointmentsLayout() {
       name: "Lannister",
       email: "chandu@gmail.com",
       mobile: "8790122447",
-      status: [
-        "pending",
-        "Completed"
-      ]
+      status: ["pending", "Completed"],
     },
     {
       id: 3,
@@ -118,10 +106,7 @@ function AppointmentsLayout() {
       name: "Lannister",
       email: "chandu@gmail.com",
       mobile: "8790122447",
-      status: [
-        "pending",
-        "Completed"
-      ]
+      status: ["pending", "Completed"],
     },
     {
       id: 4,
@@ -130,10 +115,7 @@ function AppointmentsLayout() {
       name: "Stark",
       email: "chandu@gmail.com",
       mobile: "8790122447",
-      status: [
-        "pending",
-        "Completed"
-      ]
+      status: ["pending", "Completed"],
     },
     {
       id: 5,
@@ -142,11 +124,7 @@ function AppointmentsLayout() {
       name: "Targaryen",
       email: "chandu@gmail.com",
       mobile: "8790122447",
-      status: [
-        "pending",
-        "Completed"
-      ]
-
+      status: ["pending", "Completed"],
     },
     {
       id: 6,
@@ -155,11 +133,7 @@ function AppointmentsLayout() {
       name: "Melisandre",
       email: "chandu@gmail.com",
       mobile: "8790122447",
-      status: [
-        "pending",
-        "Completed"
-      ]
-
+      status: ["pending", "Completed"],
     },
     {
       id: 7,
@@ -168,10 +142,7 @@ function AppointmentsLayout() {
       name: "Clifford",
       email: "chandu@gmail.com",
       mobile: "8790122447",
-      status: [
-        "pending",
-        "Completed"
-      ]
+      status: ["pending", "Completed"],
     },
     {
       id: 8,
@@ -180,10 +151,7 @@ function AppointmentsLayout() {
       name: "Frances",
       email: "chandu@gmail.com",
       mobile: "8790122447",
-      status: [
-        "pending",
-        "Completed"
-      ]
+      status: ["pending", "Completed"],
     },
     {
       id: 9,
@@ -192,10 +160,7 @@ function AppointmentsLayout() {
       name: "Roxie",
       email: "chandu@gmail.com",
       mobile: "8790122447",
-      status: [
-        "pending",
-        "Completed"
-      ]
+      status: ["pending", "Completed"],
     },
     {
       id: 10,
@@ -204,35 +169,32 @@ function AppointmentsLayout() {
       name: "Roxie",
       email: "chandu@gmail.com",
       mobile: "8790122447",
-      status: [
-        "pending",
-        "Completed"
-      ]
+      status: ["pending", "Completed"],
     },
   ];
 
   return (
-    <Box
-      sx={{
-        height: 650,
-        width: "70%",
-        margin: "auto",
-      }}
-    >
-      <DataGrid
+      <Box
         sx={{
-          textAlign: "center"
+          height: 650,
+          width: "70%",
+          margin: "auto",
         }}
-        rows={rows}
-        columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
-        // checkboxSelection
-        disableSelectionOnClick
-        experimentalFeatures={{ newEditingApi: true }}
-      />
-    </Box>
-  )
+      >
+        <DataGrid
+          sx={{
+            textAlign: "center",
+          }}
+          rows={rows}
+          columns={columns}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
+          // checkboxSelection
+          disableSelectionOnClick
+          experimentalFeatures={{ newEditingApi: true }}
+        />
+      </Box>
+  );
 }
 
-export default AppointmentsLayout
+export default AppointmentsLayout;
