@@ -1,3 +1,5 @@
+import { auth } from "@/config/firebase-config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { Formik } from "formik";
 import * as yup from "yup";
 
@@ -16,10 +18,26 @@ const validationSchema = yup.object().shape({
 
 export default function AdminLogin() {
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
-    console.log(values);
+
+    const login = async () => {
+        try {
+            const user = await signInWithEmailAndPassword(
+                auth,
+                values.username,
+                values.password,
+            );
+            console.log(user);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    login();
+
+    onSubmitProps.resetForm();
   };
   return (
-    <div className="shadow-2xl mr-40 w-full lg:w-[40%] md:w-[50%] lg:m-auto md:m-auto p-1 ">
+    <div className="shadow-2xl mr-40 w-full lg:w-[40%] md:w-[50%] lg:m-auto md:m-auto p-1">
       <div className="w-rull m-5 lg:m-16 md:m-5">
         <Formik
           onSubmit={handleFormSubmit}
