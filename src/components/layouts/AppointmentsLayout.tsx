@@ -9,10 +9,10 @@ import { useAuth } from "@/context/AuthContext";
 import Loading from "./Loading";
 
 const columns = [
-  { 
+  {
     field: "slno",
-    headerName: '',
-    width: 30
+    headerName: "",
+    width: 30,
   },
   {
     field: "bookingDate",
@@ -75,15 +75,15 @@ const columns = [
 ];
 
 function AppointmentsLayout() {
-  const { userInfo }:any = useAuth();
+  const { userInfo }: any = useAuth();
   const { appointments, loading, error } = useFetchAppointments();
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
-
   return (
+    <div className="">
       <Box
         sx={{
           height: 650,
@@ -92,19 +92,24 @@ function AppointmentsLayout() {
         }}
       >
         {loading && <h1>Loading...</h1>}
-        {userInfo && !loading && <DataGrid
-          sx={{
-            textAlign: "center",
-          }}
-          rows={appointments}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
-          // checkboxSelection
-          disableSelectionOnClick
-          experimentalFeatures={{ newEditingApi: true }}
-        />}
+        {userInfo && !loading && (
+          <DataGrid
+            className="dark:text-white bg-white dark:bg-black"
+            // sx={{
+            //   textAlign: "center",
+              
+            // }}
+            rows={appointments}
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
+            // checkboxSelection
+            disableSelectionOnClick
+            experimentalFeatures={{ newEditingApi: true }}
+          />
+        )}
       </Box>
+    </div>
   );
 }
 
