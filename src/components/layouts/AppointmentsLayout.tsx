@@ -4,6 +4,9 @@ import { DataGrid } from "@mui/x-data-grid";
 // import Button from "@mui/material/Button";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/config/firebase-config";
+import useFetchAppointments from "@/hooks/fetchAppointments";
+import { useAuth } from "@/context/AuthContext";
+import Loading from "./Loading";
 
 const columns = [
   { 
@@ -72,40 +75,24 @@ const columns = [
 ];
 
 function AppointmentsLayout() {
-  // const [toggle, setToggle] = useState<any>({});
-  const [appointments, setAppointments] = useState<any>([])
-  const appointmentsCollectionRef = collection(db, 'appointments')
+  const { userInfo }:any = useAuth();
+  const { appointments, loading, error } = useFetchAppointments();
 
-  // const handleToggle = (index: any) => {
-  //   setToggle({
-  //     ...toggle,
-  //     [index]: !toggle[index],
-  //   });
-  // };
+  if (loading) {
+    return <Loading />
+  }
 
-
-  useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        const data = await getDocs(appointmentsCollectionRef)
-        setAppointments(data.docs.map((doc) => ({ ...doc.data() })))
-      } catch (error) {
-        console.log(error);
-      }
-      
-    }
-    fetchAppointments()
-  },[])
 
   return (
       <Box
         sx={{
           height: 650,
-          width: "70%",
+          width: "90%",
           margin: "auto",
         }}
       >
-        <DataGrid
+        {loading && <h1>Loading...</h1>}
+        {userInfo && !loading && <DataGrid
           sx={{
             textAlign: "center",
           }}
@@ -116,7 +103,7 @@ function AppointmentsLayout() {
           // checkboxSelection
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
-        />
+        />}
       </Box>
   );
 }

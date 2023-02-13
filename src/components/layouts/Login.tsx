@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { auth } from "@/config/firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import Loading from "./Loading";
 
 const initialValues = {
   username: "",
@@ -18,7 +19,9 @@ const validationSchema = yup.object().shape({
 });
 
 function Login() {
+  const [loading, setLoading] = useState(false);
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
+    setLoading(true);
     const login = async () => {
       try {
         const user = await signInWithEmailAndPassword(
@@ -27,7 +30,7 @@ function Login() {
           values.password
         );
         console.log(user);
-        // localStorage.setItem("token", );
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -37,6 +40,10 @@ function Login() {
 
     onSubmitProps.resetForm();
   };
+
+  if (loading) {
+    return <Loading />
+  }
 
   return (
     <div className="pt-10 w-full lg:w-[60%] md:w-[80%] lg:m-auto md:m-auto p-1">
