@@ -60,7 +60,7 @@ const validationSchema = yup.object().shape({
 });
 
 function Book() {
-  const [bookingSuccess, setBookingSuccess] = useState<boolean>(false);
+  const [bookingSuccess, setBookingSuccess] = useState<boolean>(true);
   const appointmentsCollectionRef = collection(db, "appointments");
 
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
@@ -96,7 +96,7 @@ function Book() {
           <div className="text-gray-700 mt-5">
             Dedicated to healing, to provide a possible cure.
           </div>
-          <div className="w-[50%] m-auto mt-5">
+          <div className="w-[80%] md:w-[50%] lg:w-[50%] m-auto mt-5">
             <Formik
               onSubmit={handleFormSubmit}
               initialValues={initialValues}

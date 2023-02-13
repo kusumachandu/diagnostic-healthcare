@@ -4,12 +4,12 @@ import { RiArrowGoBackLine } from 'react-icons/ri';
 function BookingSuccess({ handleSuccessPage }:any) {
   return (
     <>
-      <div className="border md:w-[80%] ld:w-[80%] lg:m-auto text-center rounded-2xl lg:transition-all lg:shadow-md ">
+      <div className="border w-[95%] m-auto md:w-[80%] ld:w-[80%] lg:m-auto text-center rounded-2xl lg:transition-all lg:shadow-md">
         <div className="h-[500px] flex justify-center items-center">
           <div>
             <div className="flex justify-around py-2 mt-2">
               <div className="w-5 h-5 rounded-full bg-green-100"></div>
-              <div className="w-14 h-14 rounded-full bg-green-400 flex justify-center items-center">
+              <div className="w-14 h-14 rounded-full bg-green-400 flex justify-center items-center dark:text-black">
                 <svg
                   className=""
                   viewBox="0 0 24 24"
@@ -31,7 +31,7 @@ function BookingSuccess({ handleSuccessPage }:any) {
               <h1> Appointment booked Successfully! </h1>
             </div>
             <div className="pb-10">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 ">
                 Your appointment was booked successfully.
               </p>
             </div>
