@@ -83,14 +83,14 @@ export default function BlogViewPage() {
   }
 
   return (
-    <div className="md:px-24 lg:px-32">
+    <div className="md:px-24 lg:px-32 lg:pb-10">
       <Navbar />
       <div className="lg:grid lg:grid-cols-2 px-10">
         <div className=" text-center flex justify-center items-center">
           <div className="">
-            <h1 className="uppercase  font-bold text-2xl md:text-4xl lg:text-4xl mb-2">{blog.title}</h1>
+            <h1 className="uppercase  font-bold text-lg md:text-4xl lg:text-4xl mb-2">{blog.title}</h1>
             <p className="font-semibold text-gray-600 line px-12 md:px-20 lg:px-20 leading-[20px]">Have a brief idea about the dis-order in this page which helps to know better about your's problem</p>
-            <div className="mt-5 w-[300px] m-auto md:w-[300px] md:m-auto lg:px-0 md:mt-5 md:mb-5 lg:mt-10">
+            <div className="mt-10 mb-10 w-[300px] m-auto md:w-[300px] md:m-auto lg:px-0 md:mt-5 md:mb-5 lg:mt-10">
                 <Profile />
             </div>
           </div>
@@ -103,13 +103,13 @@ export default function BlogViewPage() {
           />
         </div>
       </div>
-      <div className="px-10 py-10 shadow-md mb-10">
-        <p className="font-semibold text-gray-600 text-lg mb-2">{blog.what}</p>
-        <p>{blog.briefdesc}</p>
+      <div className="lg:px-10 md:px-10 px-3 py-10 shadow-md mb-10 dark:shadow-white">
+        <p className="font-semibold text-gray-600 text-lg mb-2 dark:text-white">{blog.what}</p>
+        <p className="dark:text-gray-400">{blog.briefdesc}</p>
       </div>
-      <div className="px-10 py-10 shadow-md rounded-lg">
-        <p className="font-semibold text-gray-600 text-lg mb-2">{blog.question}</p>
-        <p>{blog.precaution}</p>
+      <div className="md:px-10 lg:px-10 px-3 py-10 shadow-md rounded-lg dark:shadow-white">
+        <p className="font-semibold text-gray-600 text-lg mb-2 dark:text-white">{blog.question}</p>
+        <p className="dark:text-gray-400">{blog.precaution}</p>
       </div>
     </div>
   );

@@ -23,6 +23,7 @@
     "formik": "^2.2.9",
     "lottie-web": "^5.10.2",
     "next": "13.1.6",
+    "next-themes": "^0.2.1",
     "node-env-webpack-plugin": "^1.1.0",
     "path": "^0.12.7",
     "react": "18.2.0",

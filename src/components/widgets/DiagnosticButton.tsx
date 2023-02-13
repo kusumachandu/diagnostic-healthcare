@@ -14,7 +14,7 @@ function DiagnosticButton({ state, reset, toggle, setToggle, message }: any) {
           }
         }}
         className={
-          "p-3  border rounded-lg bg-blue-500 text-white font-bold uppercase"
+          "p-3  border rounded-lg bg-blue-500 text-white font-bold uppercase text-sm md:text-md lg:text-md"
         }
       >
         {message}
