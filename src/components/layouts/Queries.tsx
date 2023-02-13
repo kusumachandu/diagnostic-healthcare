@@ -1,33 +1,18 @@
 import ContactsCard from '@/components/widgets/ContactsCard'
-import { db } from '@/config/firebase-config'
-import { collection, getDocs } from 'firebase/firestore'
-import React, { useEffect, useState } from 'react'
+import useFetchQueries from '@/hooks/fetchQueries'
+import React from 'react'
+import Loading from './Loading';
 
 function Queries() {
-  const [queries, setQueries] = useState<any>([])
-  const queriesCollectionRef = collection(db, 'queries')
+  const { queries, loading, error } = useFetchQueries();
 
-  useEffect(() => {
-    const fetchQueries = async () => {
-      try {
-        const data = await getDocs(queriesCollectionRef)
-        setQueries(data.docs.map((doc) => ({ ...doc.data() })))
-        if(queries.length > 0) {
-          queries.map((query: any) => {
-            setQueries([query, ...query]);
-          })
-        }
-      } catch (error) {
-        console.log(error);
-      }
-      
-    }
-    fetchQueries()
-  },[])
+  if (loading) {
+    return <Loading />
+  }
 
   return (
     <div>
-        <ContactsCard messages={queries} />
+        {queries && <ContactsCard messages={queries} />}
     </div>
   )
 }
