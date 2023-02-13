@@ -48,18 +48,18 @@ function Contact() {
           <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
             Lets talk about everything!
           </h2>
-          <div className="text-gray-700 mt-8">
+          <div className="text-gray-700 mt-8 dark:text-gray-400">
             Hate appointment? Send us an email instead.
           </div>
         </div>
-        <div className="m-4 md:m-15 lg:m-20 md:flex lg:flex lg:justify-evenly">
-          <div className="w-[100%]">
+        <div className="m-14 md:m-15 lg:m-20 lg:flex lg:justify-evenly">
+          <div className="hidden w-[100%] dark:rounded-3xl lg:block">
             <img
               src="https://cdn.dribbble.com/users/1602563/screenshots/8869646/media/ddc33ce2c8e2570c410123f375e2c35c.gif"
-              className="lg:h-[85%]"
+              className="lg:h-[85%] dark:rounded-3xl"
             />
           </div>
-          <div className="w-full md:w-[50%] lg:w-[50%]">
+          <div className="w-[95%] m-auto md:w-[50%] lg:w-[50%] md:m-auto lg:mt-0">
             <Formik
               onSubmit={handleFormSubmit}
               initialValues={initialValues}
@@ -75,11 +75,11 @@ function Contact() {
               }) => (
                 <form onSubmit={handleSubmit} className="text-left">
                   <div className="">
-                    <label htmlFor="name" className="uppercase text-sm text-gray-600 font-bold">
+                    <label htmlFor="name" className="uppercase text-sm text-gray-600 font-bold dark:text-gray-400">
                       Full Name
                     </label>
                     <input
-                      className={`w-full bg-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.name && touched.name
+                      className={`w-full bg-gray-300 text-gray-900 mb-10 md:mb-0 lg:mb-2 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.name && touched.name
                         ? "border border-red-700 bg-red-100"
                         : ""}`}
                       type="text"
@@ -91,11 +91,11 @@ function Contact() {
                     />
                     {errors.name && touched.name && <div className="text-red-500">{errors.name}</div>}
                     <div className="mb-2"></div>
-                    <label htmlFor="email" className="uppercase text-sm text-gray-600 font-bold">
+                    <label htmlFor="email" className="uppercase text-sm text-gray-600 dark:text-gray-400 font-bold">
                       Email
                     </label>
                     <input
-                      className={`w-full bg-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.email && touched.email
+                      className={`w-full bg-gray-300 text-gray-900 p-3 mb-10 md:mb-0 lg:mb-2 rounded-lg focus:outline-none focus:shadow-outline ${errors.email && touched.email
                         ? "border border-red-700 bg-red-100"
                         : ""}`}
                       type="email"
@@ -107,12 +107,12 @@ function Contact() {
                     />
                     {errors.email && touched.email && <div className="text-red-500">{errors.email}</div>}
                     <div className="mb-2"></div>
-                    <label htmlFor="mobile" className="uppercase text-sm text-gray-600 font-bold">
+                    <label htmlFor="mobile" className="uppercase text-sm text-gray-600 font-bold dark:text-gray-400">
                       Mobile number
                     </label>
                     
                     <input
-                      className={`w-full bg-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.mobile && touched.mobile
+                      className={`w-full bg-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:shadow-outline mb-10 md:mb-0 lg:mb-2 ${errors.mobile && touched.mobile
                         ? "border border-red-700 bg-red-100"
                         : ""}`}
                       type="text"
@@ -124,11 +124,11 @@ function Contact() {
                     />
                     {errors.mobile && touched.mobile && <div className="text-red-500">{errors.mobile}</div>}
                     <div className="mb-2"></div>
-                    <label htmlFor="message" className="uppercase text-sm text-gray-600 font-bold">
+                    <label htmlFor="message" className="uppercase text-sm text-gray-600 font-bold dark:text-gray-400">
                       Message (min 50 chars)
                     </label>
                     <textarea
-                      className={`w-full bg-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:shadow-outline ${errors.message && touched.message
+                      className={`w-full bg-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:shadow-outline h-52 ${errors.message && touched.message
                         ? "border border-red-700 bg-red-100"
                         : ""}`}
                       name="message"
@@ -138,9 +138,9 @@ function Contact() {
                       value={values.message}
                     />
                     {errors.message && touched.message && <div className="mt-[-5px] text-red-500">{errors.message}</div>}
-                    <div className="mb-4"></div>
+                    <div className="mb-4 mt-10 md:mt-0 lg:mt-0"></div>
                     <button
-                      className="uppercase text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline"
+                      className="dark:text-gray-400 uppercase text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline"
                       type="submit"
                     >
                       Send Message
