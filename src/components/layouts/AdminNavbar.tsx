@@ -1,12 +1,9 @@
 import Link from 'next/link'
 import React from 'react'
-import { signOut } from 'firebase/auth'
-import { auth } from '@/config/firebase-config'
+import { useAuth } from '@/context/AuthContext'
 
 function AdminNavbar({ toggleToAppointments, toggleToQueries }: any) {
-  const logoutHandler = () => {
-    signOut(auth);
-  }
+  const {logout}:any = useAuth();
 
   return (
     <div className="lg:px-36 lg:py-10 md:px-20 md:py-10 px-5 py-10 ">
@@ -27,7 +24,7 @@ function AdminNavbar({ toggleToAppointments, toggleToQueries }: any) {
               </p>
           </div>
         </div>
-          <div onClick={logoutHandler} className="border font-bold w-[100px] h-14 py-2 bg-primary-500 pt-[14px] rounded-[40px] text-center text-white cursor-pointer hover:bg-primary-300">
+          <div onClick={logout} className="border font-bold w-[100px] h-14 py-2 bg-primary-500 pt-[14px] rounded-[40px] text-center text-white cursor-pointer hover:bg-primary-300">
             Logout
           </div>
       </div>
