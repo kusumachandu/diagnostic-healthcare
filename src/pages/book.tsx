@@ -6,6 +6,8 @@ import { Formik } from "formik";
 import React, { useState } from "react";
 import * as yup from "yup";
 import { v4 as uuidv4 } from 'uuid';
+import config from "@/config/next-seo.config";
+import { NextSeo } from "next-seo";
 
 const date: any = new Date();
 const currDate = `${date.getFullYear()}-${
@@ -63,6 +65,12 @@ function Book() {
   const [bookingSuccess, setBookingSuccess] = useState<boolean>(false);
   const appointmentsCollectionRef = collection(db, "appointments");
 
+  const SEO = {
+    ...config,
+    title: 'Book an appointment',
+    description: 'Book an appointment for one to one meeting on the specified time slot'
+  }
+
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
     const bookingData = {
       id: uuidv4(),
@@ -86,6 +94,8 @@ function Book() {
   };
 
   return (
+    <>
+    <NextSeo {...SEO} />
     <div className="text-center">
       <Navbar />
       {!bookingSuccess && (
@@ -263,6 +273,7 @@ function Book() {
         <BookingSuccess handleSuccessPage={handleSuccessPage} />
       )}
     </div>
+    </>
   );
 }
 

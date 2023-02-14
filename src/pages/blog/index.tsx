@@ -1,9 +1,15 @@
 import React from "react";
-import Head from "next/head";
 import Link from "next/link";
 import Navbar from "@/components/layouts/Navbar";
+import config from '../../config/next-seo.config';
+import { NextSeo } from "next-seo";
 
 function blogspage() {
+  const SEO = {
+    ...config,
+    title: 'Blog',
+    description: 'Blogs related to the common issues faced by majority of the population',
+  }
   
   const blogs = [
     {
@@ -52,6 +58,8 @@ function blogspage() {
   };
 
   return (
+    <>
+    <NextSeo {...SEO} />
     <div>
       <Navbar />
       <div>
@@ -174,6 +182,7 @@ function blogspage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

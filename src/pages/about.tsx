@@ -1,8 +1,17 @@
 import Navbar from "@/components/layouts/Navbar";
 import React from "react";
+import { NextSeo } from "next-seo";
+import config from '../config/next-seo.config';
 
 function About() {
+  const SEO = {
+    ...config,
+    title: 'About',
+    description: 'Mehraaj is a leading doctor and have x years of experience in treating x diseases in x hospital.'
+  }
   return (
+    <>
+    <NextSeo {...SEO} />
     <div>
       <Navbar />
       <div className="px-10">
@@ -121,6 +130,7 @@ function About() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

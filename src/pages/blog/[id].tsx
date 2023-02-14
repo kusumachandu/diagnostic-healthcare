@@ -2,8 +2,11 @@ import React from "react";
 import { useRouter } from "next/router";
 import Profile from "@/components/widgets/Profile";
 import Navbar from "@/components/layouts/Navbar";
+import config from "@/config/next-seo.config";
+import { NextSeo } from "next-seo";
 
 export default function BlogViewPage() {
+  
   const router = useRouter();
   const { id } = router.query;
 
@@ -82,7 +85,15 @@ export default function BlogViewPage() {
     return <div>Blog not found</div>;
   }
 
+  const SEO = {
+    ...config,
+    title: 'Blog',
+    description: blog.title,
+  }
+
   return (
+    <>
+    <NextSeo {...SEO} />
     <div className="md:px-24 lg:px-32 lg:pb-10">
       <Navbar />
       <div className="lg:grid lg:grid-cols-2 px-10">
@@ -112,5 +123,6 @@ export default function BlogViewPage() {
         <p className="dark:text-gray-400">{blog.precaution}</p>
       </div>
     </div>
+    </>
   );
 }
