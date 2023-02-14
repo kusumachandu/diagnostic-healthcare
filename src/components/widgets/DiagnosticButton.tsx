@@ -10,6 +10,7 @@ function DiagnosticButton({ state, reset, toggle, setToggle, message }: any) {
           if(state === 5) {
             reset();
           }else{
+            reset();
             setToggle(true)
           }
         }}
