@@ -233,7 +233,7 @@ function Book() {
                     </label>
                     <select
                       className={`w-full bg-gray-300 mb-1 text-gray-900 p-3 rounded-lg focus:outline-none focus:shadow-outline ${
-                        errors.date && touched.date
+                        errors.time && touched.time
                           ? "border border-red-700 bg-red-100"
                           : ""
                       }`}
