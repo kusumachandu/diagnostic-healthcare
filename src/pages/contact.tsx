@@ -4,6 +4,8 @@ import { addDoc, collection } from 'firebase/firestore'
 import { db } from "@/config/firebase-config";
 import Navbar from "@/components/layouts/Navbar";
 import { v4 as uuidv4 } from 'uuid';
+import config from '../config/next-seo.config';
+import { NextSeo } from "next-seo";
 
 const initialValues = {
   name: "",
@@ -22,7 +24,13 @@ const validationSchema = yup.object().shape({
 });
 
 function Contact() {
-  const queriesCollectionRef = collection(db, "queries")
+  const SEO = {
+    ...config,
+    title: 'Contact',
+    description: 'Contact Mehraaj for any queries through messages',
+  }
+
+  const queriesCollectionRef = collection(db, "queries");
 
   const handleFormSubmit = (values: any, onSubmitProps: any) => {
     const data = {
@@ -42,6 +50,7 @@ function Contact() {
 
   return (
     <>
+      <NextSeo {...SEO} />
       <div className="text-center">
       <Navbar />
         <div>
