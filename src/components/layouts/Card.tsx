@@ -87,6 +87,7 @@ function Card() {
       ) : (
         <div className="text-center font-bold">
           <p className="mb-5"> Thankyou for answering !!</p>
+          <p className="mb-5"> Your score is {score}</p>
           <DiagnosticButton state={state} reset={reset}  toggle={toggle} setToggle={setToggle} message='Start test again' />
         </div>
       )}
