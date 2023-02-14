@@ -29,20 +29,20 @@ const columns = [
   {
     field: "name",
     headerName: "Full Name",
-    width: 180,
+    width: 220,
     editable: true,
   },
   {
     field: "email",
     headerName: "Email",
-    width: 220,
+    width: 300,
     editable: false,
   },
   {
     field: "mobile",
     headerName: "Mobile",
     type: "string",
-    width: 150,
+    width: 200,
     editable: false,
   },
   // {
@@ -87,14 +87,13 @@ function AppointmentsLayout() {
       <Box
         sx={{
           height: 650,
-          width: "90%",
           margin: "auto",
         }}
       >
         {loading && <h1>Loading...</h1>}
         {userInfo && !loading && (
           <DataGrid
-            className="dark:text-white bg-white dark:bg-black"
+            className="dark:text-white bg-white dark:bg-gray-700 w-[95%] lg:w-[80%] m-auto"
             // sx={{
             //   textAlign: "center",
               

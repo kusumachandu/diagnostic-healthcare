@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import styled from 'styled-components'
+import styled from "styled-components";
 
-const Modal = ({ show, onClose, children, handleLogout }) => {
+const Modal = ({ show, onClose, children, handleLogout }: any) => {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
@@ -16,36 +16,45 @@ const Modal = ({ show, onClose, children, handleLogout }) => {
 
   const modalContent = show ? (
     <StyledModalOverlay>
-      <StyledModal>
+      <StyledModal className="w-[250px]  md:w-[500px] lg:w-[500px]">
         <StyledModalHeader>
-          <h1>Logout</h1>
+          <h1 className="dark:text-black">Logout</h1>
           <a href="#" onClick={handleCloseClick}>
-            <svg 
-              viewBox="0 0 24 24" 
-              width="24" 
-              height="24" 
-              stroke="currentColor" 
-              stroke-width="2" 
-              fill="none" 
-              stroke-linecap="round" 
-              stroke-linejoin="round" 
-              className="duration-300 hover:rotate-180">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              stroke="currentColor"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="duration-300 hover:rotate-180 dark:text-black"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </a>
         </StyledModalHeader>
         <hr className="h-[2px] bg-gray-900 mt-2" />
-        <StyledModalBody>{children}</StyledModalBody>
+        <StyledModalBody className="dark:text-black">
+          {children}
+        </StyledModalBody>
         <div className="flex justify-between pt-6">
           <div></div>
           <div className="flex justify-between gap-2">
-          <button onClick={onClose} className="border text-white font-bold bg-stone-600 rounded-lg px-3 py-2">
-                No
-              </button>
-              <button onClick={handleLogout} className="border text-white bg-red-600 rounded-lg px-3 py-2">
-                Logout
-              </button>
+            <button
+              onClick={onClose}
+              className="border text-white font-bold bg-stone-600 rounded-lg px-3 py-2"
+            >
+              No
+            </button>
+            <button
+              onClick={handleLogout}
+              className="border text-white bg-red-600 rounded-lg px-3 py-2"
+            >
+              Logout
+            </button>
           </div>
         </div>
       </StyledModal>
@@ -64,7 +73,7 @@ const Modal = ({ show, onClose, children, handleLogout }) => {
 
 const StyledModalBody = styled.div`
   padding-top: 25px;
-  font-size:22px;
+  font-size: 22px;
 `;
 
 const StyledModalHeader = styled.div`
@@ -76,10 +85,9 @@ const StyledModalHeader = styled.div`
 
 const StyledModal = styled.div`
   background: white;
-  width: 500px;
-  height: 200px;
   border-radius: 15px;
   padding: 15px;
+
 `;
 const StyledModalOverlay = styled.div`
   position: absolute;

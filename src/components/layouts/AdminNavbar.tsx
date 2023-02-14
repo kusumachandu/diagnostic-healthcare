@@ -10,7 +10,8 @@ function AdminNavbar({ toggleToAppointments, toggleToQueries }: any) {
   const [open, setOpen] = useState(false);
 
   const handleLogout = () => {
-    logout();
+    setOpen(!open)
+    setShowModal(true)
   };
 
  function appointmentHandler(){
@@ -85,7 +86,7 @@ function AdminNavbar({ toggleToAppointments, toggleToQueries }: any) {
                   fill="none"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  className="css-i6dzq1"
+                  className="css-i6dzq1 duration-300 hover:rotate-180 cursor-pointer"
                 >
                   <line x1="3" y1="12" x2="21" y2="12"></line>
                   <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -106,7 +107,7 @@ function AdminNavbar({ toggleToAppointments, toggleToQueries }: any) {
                   fill="none"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  className="css-i6dzq1"
+                  className="css-i6dzq1 duration-300 hover:rotate-180 cursor-pointer"
                 >
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -116,33 +117,34 @@ function AdminNavbar({ toggleToAppointments, toggleToQueries }: any) {
           </div>
         </div>
         {!open && (
-          <div className="flex justify-center pt-1 ">
-            <div className="w-[70%] md:hidden lg:hidden font-semibold bg-white shadow-md border dark:bg-gray-800 dark:shadow-white text-center py-3 rounded-lg">
-              <div className="flex justify-end pr-5">
+          <div className="flex justify-center pt-1">
+            <div className="w-[70%] md:hidden lg:hidden font-semibold bg-white shadow-md border dark:bg-gray-800 dark:shadow-white text-center py-3 rounded-lg absolute z-10">
+              <div onClick={() => setOpen(!open)} className="flex justify-end pr-5">
                 <Theme />
               </div>
               <div className="mb-2">
                 <p onClick={appointmentHandler}
+                className="cursor-pointer"
                 >
                     Appointments
                 </p>
               </div>
               <div className="mb-2">
                 <p onClick={queryHandler}
+                className="cursor-pointer"
                 >
                   Queries
               </p>
               </div>
               <div>
-                <Link
+                <div
                   onClick={handleLogout}
-                  href=""
                   className="flex justify-center"
                 >
                   <div className="border font-bold w-[100px] h-10 py-2 bg-primary-500 rounded-[40px] text-center text-white cursor-pointer hover:bg-primary-300">
                     Logout
                   </div>
-                </Link>
+                </div>
               </div>
             </div>
           </div>
