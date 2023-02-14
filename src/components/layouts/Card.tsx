@@ -1,22 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DiagnosticButton from "../widgets/DiagnosticButton";
 import Question from "../widgets/Question";
 
 function Card() {
   const [state, setState] = useState<number>(0);
   const [toggle, setToggle] = useState<boolean>(false);
+  const [lastRating, setLastRating] = useState<number>(0);
+  const [prevClicked, setPrevClicked] = useState<boolean>(false);
+  let score = localStorage.getItem('score') || 0
 
-  console.log(toggle)
-
-  function increment() {
+  function increment(rating:number) {
+    score = +localStorage.getItem('score') + rating;
+    setLastRating(rating);
+    localStorage.setItem('score', +score);
+    console.log(score);
+    setPrevClicked(false);
     setState((prev) => prev + 1);
   }
 
   function decrement() {
+    score = +localStorage.getItem('score') - lastRating;
+    localStorage.setItem('score', score);
+    setPrevClicked(true);
     setState((prev) => prev - 1);
   }
 
   function reset(){
+    localStorage.setItem('score', 0);
+    setPrevClicked(false);
     setState(0);
   }
 
@@ -67,6 +78,8 @@ function Card() {
                 question={current}
                 increment={increment}
                 decrement={decrement}
+                prevClicked={prevClicked}
+                reset={reset}
               />
             </div>
           )}
@@ -74,6 +87,7 @@ function Card() {
       ) : (
         <div className="text-center font-bold">
           <p className="mb-5"> Thankyou for answering !!</p>
+          <p className="mb-5"> Your score is {score}</p>
           <DiagnosticButton state={state} reset={reset}  toggle={toggle} setToggle={setToggle} message='Start test again' />
         </div>
       )}
