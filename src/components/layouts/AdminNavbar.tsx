@@ -33,7 +33,7 @@ function AdminNavbar({ toggleToAppointments, toggleToQueries }: any) {
         <Modal
           onClose={() => setShowModal(false)}
           show={showModal}
-          handleLogout={handleLogout}
+          handleLogout={logout}
         >
           Are you sure you want to logout ??
         </Modal>
