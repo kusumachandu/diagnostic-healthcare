@@ -1,9 +1,12 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import Theme from "../widgets/Theme";
+import { motion } from "framer-motion";
+import { usePathname } from 'next/navigation';
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const path = usePathname();
 
   return (
     <div className="lg:px-36 lg:py-10 md:px-20 md:py-10 px-5 py-10">
@@ -16,22 +19,46 @@ function Navbar() {
         </Link>
         <div className="pt-2 hidden md:block lg:block">
           <div className="flex gap-4 md:gap-10 lg:gap-16 py-2 overflow-hidden">
-            <Link href="/">
+            <Link href="/" className="relative">
+              { path === '/' && (
+                <motion.span 
+                layoutId="underline"
+                className="absolute left-0 top-full block h-[1px] dark:bg-white bg-black w-full"
+              />
+              )}
               <p className="hover:text-primary-500 cursor-pointer overflow-hidden">
                 Home
               </p>
             </Link>
-            <Link href="/about">
+            <Link href="/about" className="relative">
+              { path === '/about' && (
+                <motion.span 
+                layoutId="underline"
+                className="absolute left-0 top-full block h-[1px] dark:bg-white bg-black w-full"
+              />
+              )}
               <p className="hover:text-primary-500 cursor-pointer overflow-hidden">
                 About
               </p>
             </Link>
-            <Link href="/blog">
+            <Link href="/blog" className="relative">
+              { path === '/blog' && (
+                <motion.span 
+                layoutId="underline"
+                className="absolute left-0 top-full block h-[1px] dark:bg-white bg-black  w-full"
+              />
+              )}
               <p className="hover:text-primary-500 cursor-pointer overflow-hidden">
                 Blog
               </p>
             </Link>
-            <Link href="/contact">
+            <Link href="/contact" className="relative">
+              {path === '/contact' && (
+                <motion.span 
+                layoutId="underline"
+                className="absolute left-0 top-full block h-[1px] dark:bg-white bg-black w-full"
+              />
+              )}
               <p className="hover:text-primary-500 cursor-pointer overflow-hidden">
                 Contact
               </p>
