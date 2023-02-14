@@ -60,7 +60,7 @@ const validationSchema = yup.object().shape({
 });
 
 function Book() {
-  const [bookingSuccess, setBookingSuccess] = useState<boolean>(true);
+  const [bookingSuccess, setBookingSuccess] = useState<boolean>(false);
   const appointmentsCollectionRef = collection(db, "appointments");
 
   const handleFormSubmit = (values: any, onSubmitProps: any) => {

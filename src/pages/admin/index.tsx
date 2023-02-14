@@ -23,10 +23,10 @@ export default function Admin() {
     <>
       {!currentUser && <Login />}
       {currentUser && (
-        <>
+        <div className='bg-slate-200 dark:bg-black'>
         <AdminNavbar toggleToQueries={toggleToQueries} toggleToAppointments={toggleToAppointments} />
         {isAppointments ? <AppointmentsLayout /> : <Queries />}
-        </>
+        </div>
       )}    
     </>
   )

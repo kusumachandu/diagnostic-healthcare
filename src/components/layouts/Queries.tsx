@@ -1,6 +1,7 @@
 import ContactsCard from '@/components/widgets/ContactsCard'
 import useFetchQueries from '@/hooks/fetchQueries'
 import React from 'react'
+import SampleContact from '../widgets/SampleContact';
 import Loading from './Loading';
 
 function Queries() {
@@ -13,6 +14,7 @@ function Queries() {
   return (
     <div>
         {queries && <ContactsCard messages={queries} />}
+        {/* <SampleContact /> */}
     </div>
   )
 }

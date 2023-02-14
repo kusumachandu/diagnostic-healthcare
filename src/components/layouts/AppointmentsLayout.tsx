@@ -9,10 +9,10 @@ import { useAuth } from "@/context/AuthContext";
 import Loading from "./Loading";
 
 const columns = [
-  { 
+  {
     field: "slno",
-    headerName: '',
-    width: 30
+    headerName: "",
+    width: 30,
   },
   {
     field: "bookingDate",
@@ -29,20 +29,20 @@ const columns = [
   {
     field: "name",
     headerName: "Full Name",
-    width: 180,
+    width: 220,
     editable: true,
   },
   {
     field: "email",
     headerName: "Email",
-    width: 220,
+    width: 300,
     editable: false,
   },
   {
     field: "mobile",
     headerName: "Mobile",
     type: "string",
-    width: 150,
+    width: 200,
     editable: false,
   },
   // {
@@ -75,36 +75,40 @@ const columns = [
 ];
 
 function AppointmentsLayout() {
-  const { userInfo }:any = useAuth();
+  const { userInfo }: any = useAuth();
   const { appointments, loading, error } = useFetchAppointments();
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
-
   return (
+    <div className="">
       <Box
         sx={{
           height: 650,
-          width: "90%",
           margin: "auto",
         }}
       >
         {loading && <h1>Loading...</h1>}
-        {userInfo && !loading && <DataGrid
-          sx={{
-            textAlign: "center",
-          }}
-          rows={appointments}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
-          // checkboxSelection
-          disableSelectionOnClick
-          experimentalFeatures={{ newEditingApi: true }}
-        />}
+        {userInfo && !loading && (
+          <DataGrid
+            className="dark:text-white bg-white dark:bg-gray-700 w-[95%] lg:w-[80%] m-auto"
+            // sx={{
+            //   textAlign: "center",
+              
+            // }}
+            rows={appointments}
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
+            // checkboxSelection
+            disableSelectionOnClick
+            experimentalFeatures={{ newEditingApi: true }}
+          />
+        )}
       </Box>
+    </div>
   );
 }
 
