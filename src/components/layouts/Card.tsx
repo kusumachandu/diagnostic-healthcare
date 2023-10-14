@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import DiagnosticButton from "../widgets/DiagnosticButton";
-import Question from "../widgets/Question";
+import DiagnosticButton from "@/components/widgets/DiagnosticButton";
+import Question from "@/components/widgets/Question";
 
 function Card() {
   const [state, setState] = useState<number>(0);
