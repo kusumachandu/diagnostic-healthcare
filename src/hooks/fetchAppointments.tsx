@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react'
 function useFetchAppointments() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<null|string>(null);
-  const [appointments, setAppointments] = useState<any>(null);
+  const [appointments, setAppointments] = useState<any | null>(null);
 
   const { currentUser }: any = useAuth()
 

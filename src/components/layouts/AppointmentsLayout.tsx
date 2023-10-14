@@ -76,6 +76,7 @@ const columns = [
 
 function AppointmentsLayout() {
   const { userInfo }: any = useAuth();
+  console.log(userInfo);
   const { appointments, loading, error } = useFetchAppointments();
 
   if (loading) {

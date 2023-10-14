@@ -17,7 +17,7 @@ export default function Home() {
         <Navbar />
         <div className="mt-[-30px] pb-20">
           <div className="lg:flex lg:justify-between">
-            <motion.div className="lg:pl-40 lg:pt-24 py-10"
+            <motion.div className="lg:pl-40 lg:pt-28 py-10"
               variants={divVariants}
               initial='hidden'
               whileInView='visible'
