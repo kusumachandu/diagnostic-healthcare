@@ -10,7 +10,7 @@ function Card() {
   let score = localStorage.getItem('score') || 0
 
   function increment(rating:number) {
-    score = +localStorage.getItem('score') + rating;
+    score = +!localStorage.getItem('score') + rating;
     setLastRating(rating);
     localStorage.setItem('score', +score);
     console.log(score);

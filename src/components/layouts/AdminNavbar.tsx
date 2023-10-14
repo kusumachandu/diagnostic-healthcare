@@ -1,8 +1,8 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
-import Modal from "./Modal";
-import Theme from "../widgets/Theme";
+import Modal from "@/components/layouts/Modal";
+import Theme from "@/components/widgets/Theme";
 
 function AdminNavbar({ toggleToAppointments, toggleToQueries }: any) {
   const [showModal, setShowModal] = useState(false);
@@ -10,22 +10,19 @@ function AdminNavbar({ toggleToAppointments, toggleToQueries }: any) {
   const [open, setOpen] = useState(false);
 
   const handleLogout = () => {
-    setOpen(!open)
-    setShowModal(true)
+    setOpen(!open);
+    setShowModal(true);
   };
 
- function appointmentHandler(){
-  toggleToAppointments()
-  setOpen(!open);
- }
+  function appointmentHandler() {
+    toggleToAppointments();
+    setOpen(!open);
+  }
 
- function queryHandler(){
-  toggleToQueries();
-  setOpen(!open)
-  
- }
-
-
+  function queryHandler() {
+    toggleToQueries();
+    setOpen(!open);
+  }
 
   return (
     <>
@@ -119,28 +116,24 @@ function AdminNavbar({ toggleToAppointments, toggleToQueries }: any) {
         {!open && (
           <div className="flex justify-center pt-1">
             <div className="w-[70%] md:hidden lg:hidden font-semibold bg-white shadow-md border dark:bg-gray-800 dark:shadow-white text-center py-3 rounded-lg absolute z-10">
-              <div onClick={() => setOpen(!open)} className="flex justify-end pr-5">
+              <div
+                onClick={() => setOpen(!open)}
+                className="flex justify-end pr-5"
+              >
                 <Theme />
               </div>
               <div className="mb-2">
-                <p onClick={appointmentHandler}
-                className="cursor-pointer"
-                >
-                    Appointments
+                <p onClick={appointmentHandler} className="cursor-pointer">
+                  Appointments
                 </p>
               </div>
               <div className="mb-2">
-                <p onClick={queryHandler}
-                className="cursor-pointer"
-                >
+                <p onClick={queryHandler} className="cursor-pointer">
                   Queries
-              </p>
+                </p>
               </div>
               <div>
-                <div
-                  onClick={handleLogout}
-                  className="flex justify-center"
-                >
+                <div onClick={handleLogout} className="flex justify-center">
                   <div className="border font-bold w-[100px] h-10 py-2 bg-primary-500 rounded-[40px] text-center text-white cursor-pointer hover:bg-primary-300">
                     Logout
                   </div>
