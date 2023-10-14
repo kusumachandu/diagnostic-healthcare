@@ -7,26 +7,38 @@ function Card() {
   const [toggle, setToggle] = useState<boolean>(false);
   const [lastRating, setLastRating] = useState<number>(0);
   const [prevClicked, setPrevClicked] = useState<boolean>(false);
-  let score = localStorage.getItem('score') || 0
+  // let score: any = localStorage.getItem('score') || 0
+  let score: number = parseInt(localStorage.getItem('score') || '0', 10);
 
-  function increment(rating:number) {
-    score = +!localStorage.getItem('score') + rating;
+
+  function increment(rating: number): void {
+    score = score + rating;
     setLastRating(rating);
-    localStorage.setItem('score', +score);
+    localStorage.setItem('score', score.toString());
     console.log(score);
     setPrevClicked(false);
     setState((prev) => prev + 1);
   }
+  
+
+  // function increment(rating:number) {
+  //   score = +!localStorage.getItem('score') + rating;
+  //   setLastRating(rating);
+  //   localStorage.setItem('score', +score);
+  //   console.log(score);
+  //   setPrevClicked(false);
+  //   setState((prev) => prev + 1);
+  // }
 
   function decrement() {
-    score = +localStorage.getItem('score') - lastRating;
-    localStorage.setItem('score', score);
+    score = +!localStorage.getItem('score') - lastRating;
+    localStorage.setItem('score', score.toString());
     setPrevClicked(true);
     setState((prev) => prev - 1);
   }
 
   function reset(){
-    localStorage.setItem('score', 0);
+    localStorage.setItem('score', '0');
     setPrevClicked(false);
     setState(0);
   }
