@@ -7,10 +7,10 @@ function Card() {
   const [toggle, setToggle] = useState<boolean>(false);
   const [lastRating, setLastRating] = useState<number>(0);
   const [prevClicked, setPrevClicked] = useState<boolean>(false);
-  let score = localStorage.getItem('score') || 0
+  let score: any = localStorage.getItem('score') || 0
 
   function increment(rating:number) {
-    score = +localStorage.getItem('score') + rating;
+    score = +!localStorage.getItem('score') + rating;
     setLastRating(rating);
     localStorage.setItem('score', +score);
     console.log(score);
@@ -19,7 +19,7 @@ function Card() {
   }
 
   function decrement() {
-    score = +localStorage.getItem('score') - lastRating;
+    score = +!localStorage.getItem('score') - lastRating;
     localStorage.setItem('score', score);
     setPrevClicked(true);
     setState((prev) => prev - 1);
